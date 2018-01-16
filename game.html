@@ -15,10 +15,10 @@ var ballSpeedX = 5;
 var ballY = 75;
 var ballSpeedY = 7;
 
-const TRACK_W = 80;
-const TRACK_H = 20;
-const TRACK_COLS = 10;
-const TRACK_ROWS = 14;
+const TRACK_W = 40;
+const TRACK_H = 40;
+const TRACK_COLS = 20;
+const TRACK_ROWS = 15;
 const TRACK_GAP = 2;
 var trackGrid = new Array(TRACK_COLS * TRACK_ROWS)
 var tracksLeft = 0;
@@ -42,11 +42,7 @@ function updateMousePos(evt) {
 
 function trackReset() {
 	tracksLeft = 0;
-	var i;
-	for (i = 0; i < 3 * TRACK_COLS; i++) {
-		trackGrid[i] = false; // makes first 3 rows empty so there's a gutter at the top
-	}
-	for (; i < TRACK_COLS * TRACK_ROWS; i++) {
+	for (var i = 0; i < TRACK_COLS * TRACK_ROWS; i++) {
 		trackGrid[i] = true;
 		tracksLeft++;
 	} // end of for loop
