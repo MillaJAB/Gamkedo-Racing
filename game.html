@@ -9,6 +9,9 @@
 <canvas id="gameCanvas" width="800" height="600"></canvas>
 
 <script>
+var carPic = document.createElement("img");
+var carPicLoaded = false;
+
 var canvas, canvasContext;
 var ballX = 75;
 var ballSpeedX = 5;
@@ -62,6 +65,11 @@ window.onload = function() {
 	setInterval(updateAll, 1000/framesPerSecond);
 
 	canvas.addEventListener('mousemove', updateMousePos);
+
+	carPic.onload = function() {
+		carPicLoaded = true;
+	}
+	carPic.src = "player1car.png";
 
 	ballReset();
 }
@@ -180,7 +188,12 @@ function drawTracks() {
 	
 function drawAll() {
 	colorRect(0, 0, canvas.width, canvas.height, 'black');
-	colorCircle(ballX, ballY, 10, 'white');
+	// colorCircle(ballX, ballY, 10, 'white');
+	if (carPicLoaded) {
+		canvasContext.drawImage(carPic,
+			ballX - carPic.width/2, ballY - carPic.height/2);
+	}
+
 	drawTracks();
 }
 
