@@ -30,11 +30,12 @@ var trackGrid = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 				 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
 				 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
 				 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
-				 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+				 1, 0, 2, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1,
 				 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
 				 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1,
 				 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
 				 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+				 // 0 = empty space, 1 = wall, 2 = starting spot
 
 var mouseX = 0;
 var mouseY = 0;
@@ -71,8 +72,18 @@ function updateAll() {
 }
 
 function ballReset() {
-	ballX = canvas.width/2;
-	ballY = canvas.height/2;
+	for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
+		for(var eachCol=0; eachCol<TRACK_COLS;eachCol++) {
+
+			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
+			console.log(arrayIndex);
+			if (trackGrid[arrayIndex] == 2) {
+				trackGrid[arrayIndex] = 0;
+				ballX = eachCol * TRACK_W + TRACK_W/2;
+				ballY = eachRow * TRACK_H + TRACK_H/2;
+			}
+		}
+	}
 }
 
 function ballMove() {
@@ -143,7 +154,7 @@ function ballTrackHandling() {
 } // end of ballTrackHandling();
 
 function moveAll() {
-	ballMove();
+	// ballMove();
 
 	ballTrackHandling();
 }
