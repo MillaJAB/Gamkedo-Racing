@@ -23,11 +23,6 @@ const BRICK_GAP = 2;
 var brickGrid = new Array(BRICK_COLS * BRICK_ROWS)
 var bricksLeft = 0;
 
-const PADDLE_WIDTH = 100;
-const PADDLE_THICKNESS = 10;
-const PADDLE_DIST_FROM_EDGE = 60;
-var paddleX = 400;
-
 var mouseX = 0;
 var mouseY = 0;
 
@@ -37,8 +32,6 @@ function updateMousePos(evt) {
 
 	mouseX = evt.clientX - rect.left - root.scrollLeft;
 	mouseY = evt.clientY - rect.top - root.scrollTop;
-
-	paddleX = mouseX - PADDLE_WIDTH/2;
 
 // cheat/hack to test ball in any position
 	/*ballX = mouseX;
@@ -154,33 +147,10 @@ function ballBrickHandling() {
 	} // end of valid col and row
 } // end of ballBrickHandling();
 
-function ballPaddleHandling() {
-	var paddleTopEdgeY = canvas.height-PADDLE_DIST_FROM_EDGE;
-	var paddleBottomEdgeY = paddleTopEdgeY + PADDLE_THICKNESS;
-	var paddleLeftEdgeX = paddleX;
-	var paddleRightEdgeX = paddleX + PADDLE_WIDTH;
-	if (ballY > paddleTopEdgeY && // below top of paddle
-		ballY < paddleBottomEdgeY && // above bottom of paddle
-		ballX > paddleLeftEdgeX && // right side of left paddle
-		ballX < paddleRightEdgeX) {// left of right side of paddle
-		ballSpeedY *= -1;
-
-		var centerOfPaddleX = paddleX + PADDLE_WIDTH/2;
-		var ballDistFromPaddleCenterX = ballX - centerOfPaddleX;
-		ballSpeedX = ballDistFromPaddleCenterX * 0.35;
-
-		if (bricksLeft == 0) {
-			brickReset();
-		} // out of bricks
-	} // checking if ball is in center of paddle
-} // end of ballPaddleHandling func
-
 function moveAll() {
 	ballMove();
 
 	ballBrickHandling();
-
-	ballPaddleHandling();
 }
 
 function rowColToArrayIndex(col, row) {
@@ -205,7 +175,6 @@ function drawBricks() {
 function drawAll() {
 	colorRect(0, 0, canvas.width, canvas.height, 'black');
 	colorCircle(ballX, ballY, 10, 'white');
-	colorRect(paddleX,canvas.height-PADDLE_DIST_FROM_EDGE, PADDLE_WIDTH,PADDLE_THICKNESS, 'white');
 	drawBricks();
 }
 
