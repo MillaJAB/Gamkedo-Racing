@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-	<meta content="utf-8" http-equiv="encoding">
-</head>
-
-<body>
-<canvas id="gameCanvas" width="800" height="600"></canvas>
-
-<script>
 var carPic = document.createElement("img");
 var carPicLoaded = false;
 
@@ -256,8 +245,3 @@ function colorText(showWords, textX,textY, fillColor) {
 	canvasContext.fillStyle = fillColor;
 	canvasContext.fillText(showWords, textX, textY);
 }
-
-</script>
-
-</body>
-</html>
