@@ -9,8 +9,7 @@ window.onload = function() {
 
 	setupInput();
 
-	trackImageLoad();
-	carImageLoad();
+	loadImages();
 	carReset();
 }
 
