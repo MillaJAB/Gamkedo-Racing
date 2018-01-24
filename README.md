@@ -1,2 +1,0 @@
-# Gamkedo-Racing
-Racing style 
