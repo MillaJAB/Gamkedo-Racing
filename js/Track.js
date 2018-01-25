@@ -65,25 +65,7 @@ function drawTracks() {
 
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var tileKindHere = trackGrid[arrayIndex];
-			var useImg;
-
-			switch (tileKindHere) {
-				case TRACK_ROAD:
-					useImg = roadPic;
-					break;
-				case TRACK_WALL:
-					useImg = wallPic;
-					break;
-				case TRACK_GOAL:
-					useImg = goalPic;
-					break;
-				case TRACK_TREE:
-					useImg = treePic;
-					break;
-				case TRACK_FLAG:
-					useImg = flagPic;
-					break;
-			}	
+			var useImg = trackPics[tileKindHere];
 			canvasContext.drawImage(useImg, TRACK_W*eachCol,TRACK_H*eachRow);
 
 		} 
