@@ -27,7 +27,7 @@ function carClass() {
 	} // end of carReset func
 
 	this.move = function() {
-		this.speed *= 0.97;
+		this.speed *= GROUNDSPEED_DECAY_MULT;
 
 		if (keyHeld_Gas) {
 			this.speed += DRIVE_POWER;
@@ -46,7 +46,7 @@ function carClass() {
 
 
 		this.x += Math.cos(this.ang) * this.speed;
-		this.x += Math.sin(this.ang) * this.speed;
+		this.y += Math.sin(this.ang) * this.speed;
 	}
 
 	this.draw = function() {

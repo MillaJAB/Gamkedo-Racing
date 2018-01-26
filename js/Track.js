@@ -47,8 +47,10 @@ function carTrackHandling(whichCar) {
 		carTrackRow >= 0 && carTrackRow < TRACK_ROWS) {
 			
 		if (isObstacleAtColRow(carTrackCol, carTrackRow)) {
-			carX -= Math.cos(carAng) * carSpeed;
-			carY -= Math.sin(carAng) * carSpeed;
+			// next two lines added to fix a bug, mentioned in video 9.6
+			// undoes the car movement which got it onto the wall
+			whichCar.x -= Math.cos(whichCar.ang) * whichCar.speed;
+			whichCar.y -= Math.sin(whichCar.ang) * whichCar.speed;
 
 			whichCar.speed *= -0.5;
 		} // end of track found
