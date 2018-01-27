@@ -48,7 +48,6 @@ function carTrackHandling(whichCar) {
 		var tileHere = returnTileTypeAtColRow(carTrackCol, carTrackRow)
 		
 		if (tileHere == TRACK_GOAL) {
-			whichCar.speed *= -0.5;
 			console.log(whichCar.name + " WINS");		
 		} else if (tileHere != TRACK_ROAD) {
 			// next two lines added to fix a bug, mentioned in video 9.6
