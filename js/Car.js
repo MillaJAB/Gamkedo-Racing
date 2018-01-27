@@ -21,6 +21,7 @@ function carClass() {
 					this.ang = -Math.PI/2;
 					this.x = eachCol * TRACK_W + TRACK_W/2;
 					this.y = eachRow * TRACK_H + TRACK_H/2;
+					return;
 				} // end of player start if
 			} // end of col for
 		} // end of row for
@@ -47,6 +48,8 @@ function carClass() {
 
 		this.x += Math.cos(this.ang) * this.speed;
 		this.y += Math.sin(this.ang) * this.speed;
+
+		carTrackHandling(this);
 	}
 
 	this.draw = function() {
