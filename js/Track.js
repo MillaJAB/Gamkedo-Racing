@@ -18,7 +18,7 @@ var levelOne = [4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4,
 				 0, 3, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1,
 				 0, 3, 0, 0, 0, 0, 1, 4, 4, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
 				 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 4]
-				 // 0 = empty space, 1 = wall, 2 = starting spot
+				 // 0 = empty space, 1 = wall, 2 = starting spot, 3 = goal line, 4 = trees, 5 = flags
 
 var trackGrid = [];
 
