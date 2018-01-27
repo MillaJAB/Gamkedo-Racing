@@ -18,6 +18,12 @@ function imageLoadingDoneSoStartGame() {
 	setInterval(updateAll, 1000/framesPerSecond);
 
 	setupInput();
+	
+	loadLevel(levelOne);
+}
+
+function loadLevel(whichLevel) {
+	trackGrid = whichLevel.slice(); // Copies levelOne grid to the empty track grid
 	greenCar.reset(otherCarPic, "Green Machine");
 	blueCar.reset(carPic, "Blue Steel");
 }
